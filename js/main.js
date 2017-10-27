@@ -35,18 +35,30 @@ function checkForMatch(){
 		alert("You found a match!");
 	} else {
 		alert("Sorry, try again!");
+		//add logic here to revert back to img.back, remove cards from this array
 	}
 }
 
 
-function flipCard(cardID) {
-	console.log(cards[cardID].rank + " of " + cards[cardID].suit + " was flipped");
-	cardsInPlay.push(cards[cardID].rank);
+function flipCard() {
+	var cardId = this.getAttribute('data-id');
+	console.log(cards[cardId].rank + " of " + cards[cardId].suit + " was flipped");
+	cardsInPlay.push(cards[cardId].rank);
+	this.setAttribute('src', cards[cardId].cardImage);
 	if (cardsInPlay.length === 2){
 		checkForMatch();
 	}
 }
 
+function createBoard() {
+	for (var i = 0; i < cards.length; i++){
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src','images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('gameboard').appendChild(cardElement);
 
+	} 
+}
 
-flipCard(1);
+createBoard();
