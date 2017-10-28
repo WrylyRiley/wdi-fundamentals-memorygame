@@ -59,6 +59,10 @@ main {
 img {
 	margin: 40px 8px 0 8px;
 }
+.score {
+	margin: 20px 0 0 0;
+	display: inline;
+}
 .copyright {
 	font-family: Raleway, sans-serif;
 	float: left;
